@@ -1,0 +1,33 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "idawebapp4a9335be",
+  "functionName": "idawebapp4a9335bePostConfirmation",
+  "resourceName": "idawebapp4a9335bePostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "/snapshot/amplify-cli/build/node_modules/@aws-amplify/amplify-category-auth/provider-utils/awscloudformation/triggers/PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "triggerEventPath": "PostConfirmation.event.json",
+  "roleName": "idawebapp4a9335bePostConfirmation",
+  "skipEdit": true,
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "idawebappidaAppsyncHelper",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true,
+      "env": "dev"
+    }
+  ],
+  "permissions": {
+    "api": {
+      "iDAWebGraphQL": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  }
+}

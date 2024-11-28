@@ -1,0 +1,50 @@
+.dateRangeCustomize  .ant-picker-dropdown{
+ position: sticky;
+}
+
+.dateRangeCustomize .ant-picker-dropdown-range{
+ margin-top:  40px;
+}
+
+.dateRangeCustomize{
+ display: flex;
+ width: 100%;
+ justify-content: center;
+}
+
+.dateRangeCustomize .ant-picker-range-wrapper{
+ justify-content: center;
+}
+
+.dateRangeCustomize .ant-picker-date-range-wrapper{
+ margin-top: 40px;
+}
+
+.dateRangeCustomize .ant-picker-range-arrow{
+ display: none;
+}
+
+.dateRangeCustomize .ant-picker-content{
+ width: 400px !important;
+}
+.dateRangeCustomize  .ant-picker-panel{
+ width: 400px !important;
+}
+
+.dateRangeCustomize .ant-picker-date-panel{
+ width: 400px;
+}
+
+.dateRangeCustomize .ant-picker-panel-container{
+ box-shadow: none;
+ border: 1px solid rgb(210, 201, 201);
+}
+
+.dateRangeCustomize .ant-picker-date-panel .ant-picker-body{
+ padding: 30px 12px;
+}
+
+.timingFooter{
+ position: relative;
+ top: 450px;
+}

@@ -1,0 +1,39 @@
+.coming-soon {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.portal-input .ant-input {
+    border-radius: 6px !important;
+}
+
+.portal-input .ant-input:hover {
+    border: 1px solid #D9D9D9 !important;
+}
+
+.portal-input .ant-input:focus {
+    border: 1px solid #D9D9D9 !important;
+    box-shadow: 0 0 0 2px rgb(242, 101, 57, 0.2);
+}
+.member-card .ant-card {
+    border: 1px solid rgb(242, 101, 57, 0.1);
+}
+
+.member-card .ant-card-head {
+    height: 40px;
+    min-height: 40px;
+}
+
+.member-card .ant-card-head-title {
+    padding: 0px;
+}
+
+.member-card .ant-card-extra {
+    padding: 10px 0px;
+}
+
+.formMargin .ant-form-item{
+    margin-bottom: 15px;
+}
+

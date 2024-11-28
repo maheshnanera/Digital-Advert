@@ -1,0 +1,459 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+
+type Organization
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # root user of the organization
+      {
+        allow: owner
+        ownerField: "rootID"
+        identityClaim: "sub"
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      { allow: private, provider: userPools, operations: [create] }
+      # admin of the organization
+      {
+        allow: groups
+        groupsField: "fullGroups"
+        operations: [create, update, read, delete]
+      }
+      # operator of the organization
+      { allow: groups, groupsField: "editGroups", operations: [read, update] }
+    ]
+  ) {
+  id: ID!
+  readGroups: String! #organizationID-read
+  editGroups: String! #organizationID-edit
+  fullGroups: String! #organizationID-full
+  photo: String
+  organizationName: String
+  rootID: ID
+  rootUser: User @hasOne(fields: ["rootID"])
+  users: [OrganizationRole]
+    @hasMany(indexName: "byOrganization", fields: ["id"])
+  campaigns: [Campaign] @hasMany(indexName: "byOrganization", fields: ["id"])
+  mediaContent: [MediaContent]
+    @hasMany(indexName: "byOrganization", fields: ["id"])
+  paymentMethodId: String
+  stripeCustomerId: String
+  payingAmount: String
+  transactionDateTime: AWSDateTime
+  paidByUserEmail: AWSEmail
+  paymentIntentId: String
+  cardLastDigit: String
+  accountHolderName: String
+  cardCompanyName: String
+  country: String
+  currency: String
+  VATNumber: String
+  billingLanguage: String
+  companyName: String
+  address: String
+  postalCode: String
+  city: String
+}
+
+type User
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # user
+      {
+        allow: owner
+        ownerField: "id"
+        identityClaim: "sub"
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      { allow: private, provider: userPools, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  photo: String
+  email: AWSEmail
+  firstName: String
+  lastName: String
+  phoneNumber: AWSPhone
+  role: [OrganizationRole] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type MediaContent
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # user(Admin/Root/Operator) of organization that is inviting other user
+      {
+        allow: private
+        provider: userPools
+        operations: [create, update, read, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  media: String
+  mediaName: String
+  mediaHeight: String
+  videoDuration: String
+  mediaWidth: String
+  description: String
+  contentType: String
+  organizationID: ID! @index(name: "byOrganization")
+  organization: Organization @belongsTo(fields: ["organizationID"])
+}
+
+type OrganizationRole
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # user(Admin/Root/Operator) of organization that is inviting other user
+      {
+        allow: private
+        provider: userPools
+        operations: [create, update, read, delete]
+      }
+    ]
+  ) {
+  id: ID
+  userID: ID! @index(name: "byUser")
+  user: User @belongsTo(fields: ["userID"])
+  organizationID: ID! @index(name: "byOrganization")
+  organization: Organization @belongsTo(fields: ["organizationID"])
+  role: USER_ROLE! @default(value: "ROOT")
+  isInvitedUser: Boolean @default(value: "false")
+  isActivated: Boolean @default(value: "true")
+}
+
+type GeoLocation
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  geometryID: ID
+  geometry: Geometry @hasOne(fields: ["geometryID"])
+  propertiesID: ID
+  properties: Properties @hasOne(fields: ["propertiesID"])
+}
+
+type Geometry
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  geoShapeType: String
+  coordinates: [String]
+  geoLocationID: ID @index(name: "byGeoLocation")
+  geoLocation: GeoLocation @belongsTo(fields: ["geoLocationID"])
+}
+
+type Properties
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  COUNTRY: String
+  NAME_1: String
+  LAD21NM: String
+  NAME_3: String
+  geoLocationID: ID @index(name: "byGeoLocation")
+  geoLocation: GeoLocation @belongsTo(fields: ["geoLocationID"])
+}
+
+type Campaign
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      {
+        allow: groups
+        groupsField: "fullGroups"
+        operations: [create, update, read, delete]
+      }
+      # admin or root user of organization
+      { allow: groups, groupsField: "editGroups", operations: [update, read] }
+      # admin or root user of organization
+      { allow: groups, groupsField: "readGroups", operations: [read] }
+    ]
+  ) {
+  id: ID!
+  CampaignName: String!
+  readGroups: String! #organizationID-read
+  editGroups: String! #organizationID-edit
+  fullGroups: String! #organizationID-full
+  targetCountry: String
+  targetCities: [ID]
+  targetVenues: [ID]
+  targetServices: [ID]
+  targetMediaContents: [ID]
+  status: CAMPAIGN_STATUS
+  startTime: AWSDateTime
+  endTime: AWSDateTime
+  brandName: String
+  organizationID: ID! @index(name: "byOrganization")
+  organization: Organization @belongsTo(fields: ["organizationID"])
+  paymentMethodId: String
+  stripeCustomerId: String
+  payingAmount: String
+  transactionDateTime: AWSDateTime
+  paidByUserEmail: AWSEmail
+  paymentIntentId: String
+  currency: String
+  isLaunched: Boolean @default(value: "false")
+}
+
+enum CAMPAIGN_STATUS {
+  CAMPAIGN
+  GEO_LOCATION
+  VENUE_TYPES
+  TIME
+  GALLERY
+  BRAND
+  REVIEW
+}
+
+enum USER_ROLE {
+  ROOT
+  ADMIN
+  OPERATOR
+}
+
+type ScreenGeoLocation
+  @searchable
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # superadmin
+      {
+        allow: groups
+        groups: ["SuperAdmin"]
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  targetCountry: String
+  maxCapacity: String
+  deviceName: String
+  isAllVenueSelected: Boolean
+  targetVenues: [ID]
+  lat: Float
+  lng: Float
+  height: String
+  width: String
+}
+
+type VenueCatalog
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # superadmin
+      {
+        allow: groups
+        groups: ["SuperAdmin"]
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  venuePrsetName: String
+  isSelectable: Boolean @default(value: "true")
+  venueCatalogItems: [VenueCatalogItem]
+    @hasMany(indexName: "byVenueCatalog", fields: ["id"])
+}
+
+type VenueCatalogItem
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # superadmin
+      {
+        allow: groups
+        groups: ["SuperAdmin"]
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  venueItemName: String
+  isSelectable: Boolean @default(value: "true")
+  description: String
+  thumbnail: String
+  venueCatalogID: ID! @index(name: "byVenueCatalog")
+  VenueCatalog: VenueCatalog @belongsTo(fields: ["venueCatalogID"])
+}
+
+type ServiceCatalog
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # superadmin
+      {
+        allow: groups
+        groups: ["SuperAdmin"]
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  serviceName: String
+  isSelectable: Boolean @default(value: "true")
+  serviceCatalogItems: [ServiceCatalogItem] @hasMany(fields: ["id"])
+}
+
+type ServiceCatalogItem
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # iam user
+      {
+        allow: private
+        provider: iam
+        operations: [create, read, update, delete]
+      }
+      # superadmin
+      {
+        allow: groups
+        groups: ["SuperAdmin"]
+        operations: [create, read, update, delete]
+      }
+      # authenticated users
+      {
+        allow: private
+        provider: userPools
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  ServiceCatalogName: String
+  isSelectable: Boolean @default(value: "true")
+  serviceCatalogID: ID!
+  ServiceCatalog: ServiceCatalog @belongsTo(fields: ["serviceCatalogID"])
+}

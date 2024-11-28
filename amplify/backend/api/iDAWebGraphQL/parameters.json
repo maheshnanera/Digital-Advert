@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "iDAWebGraphQL",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-04-01T04:23:25.644Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authidawebapp4a9335be",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

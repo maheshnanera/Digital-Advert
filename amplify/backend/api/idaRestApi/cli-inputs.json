@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "paths": {
+    "/inviteUser": {
+      "name": "/inviteUser",
+      "lambdaFunction": "inviteUser",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/create-payment-intent": {
+      "name": "/create-payment-intent",
+      "lambdaFunction": "billing",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/get-compatible-media": {
+      "name": "/get-compatible-media",
+      "lambdaFunction": "campaignOperation",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

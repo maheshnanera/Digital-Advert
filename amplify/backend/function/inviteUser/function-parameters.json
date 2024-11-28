@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "api": {
+      "iDAWebGraphQL": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "auth": {
+      "idawebapp4a9335be": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "idawebappPythonLayer",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true,
+      "env": "production"
+    }
+  ]
+}

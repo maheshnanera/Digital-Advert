@@ -1,0 +1,20 @@
+{
+  "lambdaLayers": [],
+  "permissions": {
+    "api": {
+      "iDAWebGraphQL": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "auth": {
+      "idawebapp4a9335be": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  }
+}

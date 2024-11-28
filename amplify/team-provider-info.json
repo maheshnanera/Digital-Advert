@@ -1,0 +1,136 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-idawebapp-dev-170540-authRole",
+      "UnauthRoleArn": "arn:aws:iam::437326140083:role/amplify-idawebapp-dev-170540-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::437326140083:role/amplify-idawebapp-dev-170540-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+      "UnauthRoleName": "amplify-idawebapp-dev-170540-unauthRole",
+      "StackName": "amplify-idawebapp-dev-170540",
+      "StackId": "arn:aws:cloudformation:us-east-1:437326140083:stack/amplify-idawebapp-dev-170540/2a1a7800-e2c0-11ee-a4d6-0e08d590e54f",
+      "AmplifyAppId": "d39x640f2idjab",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-idawebapp-dev-170540-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-idawebapp-dev-170540-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "idawebapp4a9335be": {},
+        "userPoolGroups": {}
+      },
+      "api": {
+        "iDAWebGraphQL": {},
+        "idaRestApi": {}
+      },
+      "function": {
+        "idawebapp4a9335beCustomMessage": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/idawebapp4a9335beCustomMessage-346e4236593072766755-build.zip"
+        },
+        "idawebappidaAppsyncHelper": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/idawebappidaAppsyncHelper-LambdaLayerVersion958175a3-build.zip"
+        },
+        "idawebappPythonLayer": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/idawebappPythonLayer-LambdaLayerVersion75f7a2f8-build.zip"
+        },
+        "idawebapp4a9335bePreTokenGeneration": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/idawebapp4a9335bePreTokenGeneration-514d4c387652664b754a-build.zip"
+        },
+        "idawebapp4a9335bePostConfirmation": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/idawebapp4a9335bePostConfirmation-32524b3357745365766f-build.zip"
+        },
+        "inviteUser": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/inviteUser-5a664b4c576b68312b52-build.zip"
+        },
+        "billing": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/billing-6953675461706a6a3633-build.zip"
+        },
+        "campaignOperation": {
+          "deploymentBucketName": "amplify-idawebapp-dev-170540-deployment",
+          "s3Key": "amplify-builds/campaignOperation-532b6655596b48737745-build.zip"
+        },
+        "iDAWebGraphQL": {},
+        "idawebapp4a9335be": {}
+      },
+      "storage": {
+        "idas3bucketforimages": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
+    }
+  },
+  "production": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-idawebapp-production-102701-authRole",
+      "UnauthRoleArn": "arn:aws:iam::437326140083:role/amplify-idawebapp-production-102701-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::437326140083:role/amplify-idawebapp-production-102701-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+      "UnauthRoleName": "amplify-idawebapp-production-102701-unauthRole",
+      "StackName": "amplify-idawebapp-production-102701",
+      "StackId": "arn:aws:cloudformation:eu-west-2:437326140083:stack/amplify-idawebapp-production-102701/d8d227b0-432f-11ef-a914-0a79dd2470b5",
+      "AmplifyAppId": "d3i77nt2ikvwto",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-idawebapp-production-102701-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-idawebapp-production-102701-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "api": {
+        "iDAWebGraphQL": {},
+        "idaRestApi": {}
+      },
+      "auth": {
+        "idawebapp4a9335be": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "billing": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/billing-44737362763233355452-build.zip"
+        },
+        "campaignOperation": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/campaignOperation-532b6655596b48737745-build.zip"
+        },
+        "idawebapp4a9335beCustomMessage": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/idawebapp4a9335beCustomMessage-346e4236593072766755-build.zip"
+        },
+        "idawebapp4a9335bePostConfirmation": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/idawebapp4a9335bePostConfirmation-3433777643715a564f69-build.zip"
+        },
+        "idawebapp4a9335bePreTokenGeneration": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/idawebapp4a9335bePreTokenGeneration-58555a4465373456796b-build.zip"
+        },
+        "idawebappPythonLayer": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/idawebappPythonLayer-LambdaLayerVersiondc3cc019-build.zip"
+        },
+        "idawebappidaAppsyncHelper": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/idawebappidaAppsyncHelper-LambdaLayerVersion6f28f639-build.zip"
+        },
+        "inviteUser": {
+          "deploymentBucketName": "amplify-idawebapp-production-102701-deployment",
+          "s3Key": "amplify-builds/inviteUser-5a664b4c576b68312b52-build.zip"
+        },
+        "iDAWebGraphQL": {},
+        "idawebapp4a9335be": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
+      },
+      "storage": {
+        "idas3bucketforimages": {}
+      }
+    }
+  }
+}

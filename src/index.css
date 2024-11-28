@@ -1,0 +1,83 @@
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Inter", sans-serif;
+}
+
+.remember_forget_pass {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.ant-form-item-label>label,
+.ant-form-item-label>label>.ant-row {
+  width: 100%;
+}
+
+.ant-input:focus {
+  border: 1px solid rgb(242, 101, 57, 0.2);
+    box-shadow: 0 0 0 2px rgba(242, 101, 57, 0.2);
+  }
+  
+  .ant-input:hover {
+    border: 1px solid rgb(242, 101, 57, 0.2);
+    box-shadow: 0 0 0 2px rgba(242, 101, 57, 0.2);
+}
+.ant-input-group.ant-input-group-compact>*:not(:last-child) {
+  margin-right: 16px !important;
+}
+/* this will remove extar border o the  clearable input  */
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: rgb(242, 101, 57, 0.4);
+  box-shadow: 0 0 0 2px rgba(242, 101, 57, 0.2);
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: rgb(242, 101, 57, 0.4);
+  box-shadow: 0 0 0 2px rgba(242, 101, 57, 0.2);
+
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):focus {
+  border-color: rgb(242, 101, 57, 0.4);
+  box-shadow: 0 0 0 2px rgba(242, 101, 57, 0.2);
+
+}
+
+
+.ant-radio-inner::after {
+  background-color: rgb(242, 101, 57, 0.8);
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: rgb(242, 101, 57, 0.4);
+}
+
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio:hover .ant-radio-inner,
+.ant-radio-input:focus+.ant-radio-inner {
+  border-color: rgb(242, 101, 57, 0.4);
+}
+
+.ant-radio-input:focus+.ant-radio-inner {
+  box-shadow: 0 0 0 3px rgba(242, 101, 57, 0.2);
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: rgb(242, 101, 57, 0.8) !important;
+}
+.ant-tabs-tab.ant-tabs-tab:hover{
+  color: rgb(242, 101, 57, 0.8) !important;
+}
+
+.ant-tabs-ink-bar {
+  background-color: rgb(242, 101, 57, 0.8) !important;
+}
